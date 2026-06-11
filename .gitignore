@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/OpenWebStorage.kdev4
+/.vs/OpenWebServiceStorage/FileContentIndex
+/.vs/OpenWebServiceStorage/v17/ipch/AutoPCH
+/out/build/x64-Debug
+/.vs

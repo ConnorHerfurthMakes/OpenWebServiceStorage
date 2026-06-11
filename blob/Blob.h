@@ -1,0 +1,32 @@
+#pragma once
+
+#include <vector>
+#include "communications/PutRequest.h"
+#include "communications/PutResponse.h"
+#include "communications/GetRequest.h"
+#include "communications/GetResponse.h"
+#include "communications/DeleteRequest.h";
+#include "communications/DeleteResponse.h"
+#include "communications/ListRequest.h"
+#include "communications/ListResponse.h"
+
+// A Blob represents a collection of objects and the access patterns that
+// enable it to store objects.
+class Blob
+{
+public:
+	// Constructor
+	Blob();
+
+	// Put Methods
+	virtual PutResponse Put(PutRequest request);
+
+	// Get Methods
+	virtual GetResponse Get(GetRequest request);
+
+	// Delete Methods
+	virtual DeleteResponse Delete(DeleteRequest request);
+
+	// List Methods
+	virtual ListResponse List(ListRequest request);
+};
