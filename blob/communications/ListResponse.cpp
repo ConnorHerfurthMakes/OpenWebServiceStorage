@@ -7,7 +7,7 @@ ListResponse::ListResponse()
 
 ListResponse::ListResponse(std::vector<ObjectKey> keys)
 {
-	keys_ = keys.
+	keys_ = keys;
 }
 
 void ListResponse::AddKey(ObjectKey key)
