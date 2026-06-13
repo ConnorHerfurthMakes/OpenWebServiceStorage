@@ -29,4 +29,15 @@ public:
 
 	// List Methods
 	virtual ListResponse List(ListRequest request);
+
+	// Connection Methods
+	// Although not all blobs have a literal connection,
+	// this also serves as a way of verifying if they're ready
+	// Returns true if connection succeeded
+	virtual bool Connect();
+	// Returns whether the blob is connected (i.e. able to read
+	// and write)
+	virtual bool IsConnected();
+	// Disconnects the blob.
+	virtual void Disconnect();
 };

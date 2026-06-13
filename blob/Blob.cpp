@@ -29,3 +29,19 @@ ListResponse Blob::List(ListRequest request)
 	// Kind of, anyway.
 	return ListResponse();
 }
+
+
+bool Blob::Connect()
+{
+	return false;
+}
+
+bool Blob::IsConnected()
+{
+	return false;
+}
+
+void Blob::Disconnect()
+{
+
+}

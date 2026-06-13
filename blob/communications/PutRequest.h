@@ -1,5 +1,7 @@
 #pragma once
 
+#include <span>
+
 #include "../types/ObjectKey.h"
 
 // The class that holds the data for adding an object.
@@ -11,9 +13,15 @@ public:
 	// Constructors
 	PutRequest();
 	PutRequest(ObjectKey key);
+	PutRequest(ObjectKey key, std::span<const char> bytes);
 
 	// Getters
 	ObjectKey GetKey();
+	std::span<const char> GetBytes();
+
 protected:
 	ObjectKey key_;
+	// We use a span so that we don't need to actually handle
+	// memory when making a request.
+	std::span<const char> bytes_;
 };
