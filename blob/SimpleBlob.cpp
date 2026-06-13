@@ -11,8 +11,14 @@ PutResponse SimpleBlob::Put(PutRequest request)
 		return PutResponse(false);
 
 	std::filesystem::path object_path = GetObjectPath(request.GetKey());
-
-	// TODO: Make it create directories recursively.
+	std::filesystem::path parent_path = object_path.parent_path();
+	
+	// Creating the directories if they don't already exist
+	if (!std::filesystem::is_directory(parent_path) &&
+		!std::filesystem::exists(parent_path))
+	{
+		std::filesystem::create_directories(parent_path);
+	}
 	std::ofstream object_out_stream(object_path);
 
 	if (!object_out_stream.is_open())
@@ -101,6 +107,9 @@ bool SimpleBlob::IsConnected()
 void SimpleBlob::Disconnect()
 {
 	// Does nothing, you can't really disconnect from a directory.
+	// It may be useful for the blob to hold a connected variable, and
+	// only allow things to access when connected to keep things consistent.
+	// For now though I think this is fine.
 }
 
 std::vector<std::string> SimpleBlob::Split(ObjectKey key, char delimiter)
